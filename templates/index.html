@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{% block title %}Formula 1 Database - Home{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <div class="card mb-4">
+            <div class="card-body">
+                <h1 class="card-title">Welcome to the Formula 1 Database</h1>
+                <p class="card-text">
+                    This application provides information about Formula 1 drivers and teams.
+                    You can view, query, and compare data about drivers and teams.
+                </p>
+                
+                {% if not user %}
+                <div class="alert alert-info">
+                    <strong>Note:</strong> You need to <a href="/login">log in</a> to add, edit, or delete data.
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card mb-4">
+            <div class="card-header">
+                <h2 class="h5 mb-0">Drivers</h2>
+            </div>
+            <div class="card-body">
+                <p>View statistics for Formula 1 drivers, including:</p>
+                <ul>
+                    <li>Age</li>
+                    <li>Total pole positions</li>
+                    <li>Total race wins</li>
+                    <li>Total points scored</li>
+                    <li>Total world titles</li>
+                    <li>Total fastest laps</li>
+                </ul>
+                <div class="d-grid gap-2">
+                    <a href="/drivers" class="btn btn-primary">View All Drivers</a>
+                    <a href="/drivers/query" class="btn btn-outline-secondary">Query Drivers</a>
+                    <a href="/drivers/compare" class="btn btn-outline-secondary">Compare Drivers</a>
+                    {% if user %}
+                    <a href="/drivers/add" class="btn btn-success">Add New Driver</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-6">
+        <div class="card mb-4">
+            <div class="card-header">
+                <h2 class="h5 mb-0">Teams</h2>
+            </div>
+            <div class="card-body">
+                <p>View statistics for Formula 1 teams, including:</p>
+                <ul>
+                    <li>Year founded</li>
+                    <li>Total pole positions</li>
+                    <li>Total race wins</li>
+                    <li>Total constructor titles</li>
+                    <li>Finishing position in previous season</li>
+                </ul>
+                <div class="d-grid gap-2">
+                    <a href="/teams" class="btn btn-primary">View All Teams</a>
+                    <a href="/teams/query" class="btn btn-outline-secondary">Query Teams</a>
+                    <a href="/teams/compare" class="btn btn-outline-secondary">Compare Teams</a>
+                    {% if user %}
+                    <a href="/teams/add" class="btn btn-success">Add New Team</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
